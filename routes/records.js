@@ -5,9 +5,6 @@ const {
     validateStartDate, 
     validateEndDate, 
     validateDate, 
-    validateMinCount, 
-    validateMaxCount, 
-    validateMinCountLessThanMaxCount
 } = require("./../validator/validator");
 
 const routes = express.Router({
