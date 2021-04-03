@@ -15,7 +15,7 @@ app.use("/records", recordRoutes);
 
 const PORT = process.env.PORT || 8070;
 
-app.get("/", (req, res) => res.send("Welcome!"))
+app.get("/", (req, res) => res.send("Welcome to express case study!"))
 
 connectDB().then(() => {
     app.listen(PORT, () => {
