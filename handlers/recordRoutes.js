@@ -10,7 +10,7 @@ recordRoutesHandler.fetchData = async (req) => {
     const endDateNextDateToISOString = endDate.toISOString();
 
     try {
-        const res = await fetchDataFromDB(startDateToISOString, endDateNextDateToISOString, req.body.minCount, req.body.maxCount);
+        const res = await recordRoutesHandler.fetchDataFromDB(startDateToISOString, endDateNextDateToISOString, req.body.minCount, req.body.maxCount);
         return res;
     } catch(err) {
         throw new err;
@@ -18,7 +18,7 @@ recordRoutesHandler.fetchData = async (req) => {
     
 };
 
-const fetchDataFromDB = async(startDateToISOString, endDateNextDateToISOString, minCount, maxCount) => {
+recordRoutesHandler.fetchDataFromDB = async(startDateToISOString, endDateNextDateToISOString, minCount, maxCount) => {
     try {
         const db = getDB();
 
@@ -61,7 +61,7 @@ const fetchDataFromDB = async(startDateToISOString, endDateNextDateToISOString, 
                }
             }
        ]).toArray();
-    
+       
        return result;
     } catch (err) {
         throw new Error ("Error happened in fetching data from database");

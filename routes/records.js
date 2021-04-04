@@ -14,7 +14,7 @@ const routes = express.Router({
 routes.post("/", [validateStartDate, validateEndDate, validateDate], async (req, res) => {
     try {
         let jsonObj = {}
-        
+       
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             let errs = errors.array();
@@ -29,7 +29,7 @@ routes.post("/", [validateStartDate, validateEndDate, validateDate], async (req,
                 records: []
             }
             
-            return res.send(jsonObj)
+            return res.status(400).send(jsonObj)
         }
         
         const result = await recordRoutesHandler.fetchData(req);
@@ -47,7 +47,7 @@ routes.post("/", [validateStartDate, validateEndDate, validateDate], async (req,
             code: 2,
             message: err.message
         }
-        return res.status(400).send(jsonObj);
+        return res.status(500).send(jsonObj);
     }
     
 })
