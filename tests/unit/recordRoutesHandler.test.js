@@ -42,39 +42,4 @@ describe("Unit test of the record route handler", () => {
         expect(result).toBeInstanceOf(Array);
     });
 
-    // it("should return empty validation object", () => {
-    //     const reqObj = {
-    //         body: {
-    //             "startDate": "2016-02-28", 
-    //             "endDate": "2019-03-02", 
-    //             "minCount": 2700, 
-    //             "maxCount": 2800 
-    //         }
-    //     }
-    //     const result = recordRoutesHandler.getValidationResult(reqObj);
-    //     expect(Object.keys(result).length).toBe(0);
-    //     expect(result).toBeInstanceOf(Object);
-    // });
-
-    // // it("should return validation object with values", () => {
-    // //     const req = {
-    // //         body: {
-    // //             "startDate": "20161-02-28", 
-    // //             "endDate": "2019-03-02", 
-    // //             "minCount": 2700, 
-    // //             "maxCount": 2800 
-    // //         }
-    // //     }
-    // //     //recordRoutesHandler.fetchDataFromDB = jest.fn(() => Promise.resolve(recs));
-
-    // //     const result = recordRoutesHandler.getValidationResult(req);
-    // //     console.log("=====result1====", result);
-    // //     expect(4).toBe(4);
-    // //     //expect(Object.keys(result).length).toBe(0);
-    // //     //expect(result).toBeInstanceOf(Object);
-    // //     // if (Object.keys(jsonObj).length !== 0 && jsonObj.constructor === Object) {
-    // //     //     return res.status(400).send(jsonObj)
-    // //     // }
-    // //     //expect(result).toBeInstanceOf(Array);
-    // // })
 });
