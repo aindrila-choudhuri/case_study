@@ -23,7 +23,6 @@ artifacts:
   files:
     - index.js
     - app.js
-    - config/*
     - database/*
     - handlers/*
     - routes/*

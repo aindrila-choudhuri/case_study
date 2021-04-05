@@ -3,8 +3,10 @@ const configs = require("./../config/config")
 // kept it global for api integration test
 global._db = "";
 
+const mongoURI = process.env.Mongo_URI || configs.mongodb.dbURI
+
 const connectDB = async () => {
-    const client = new MongoClient(configs.mongodb.dbURI, { useUnifiedTopology: true });
+    const client = new MongoClient(mongoURI+"?retryWrites=true", { useUnifiedTopology: true });
  
     try {
         // Connect to the MongoDB cluster
