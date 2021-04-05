@@ -3,11 +3,9 @@ const app = require("./../../app");
 const {connectDB} = require("./../../database/connection");
 
 describe("Test the record route", () => {
-    beforeAll((done) => {
-        connectDB().then(() =>{ 
-            done();
-        })
-        .catch(err => done(err));
+    beforeAll(async(done) => {
+        await connectDB();
+        done();
     });
 
     afterAll((done) => {
