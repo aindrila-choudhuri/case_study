@@ -3,7 +3,11 @@ const configs = require("./../config/config")
 // kept it global for api integration test
 global._db = "";
 
-const mongoURI = process.env.Mongo_URI || configs.mongodb.dbURI
+const mongoURI = process.env.MONGO_URI;
+
+// || configs.mongodb.dbURI
+
+console.log("====mongoURI===", mongoURI)
 
 const connectDB = async () => {
     const client = new MongoClient(mongoURI+"?retryWrites=true", { useUnifiedTopology: true });
