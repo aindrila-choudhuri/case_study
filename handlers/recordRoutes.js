@@ -4,9 +4,10 @@ const recordRoutesHandler = {}
 
 recordRoutesHandler.fetchData = async (req) => {
     const startDateToISOString = new Date(req.body.startDate).toISOString();
+    
     const endDate = new Date(req.body.endDate);
+    // created date should be less than end date next day 00.00
     endDate.setDate(endDate.getDate() + 1);
-
     const endDateNextDateToISOString = endDate.toISOString();
 
     try {

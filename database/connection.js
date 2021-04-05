@@ -1,5 +1,6 @@
 const {MongoClient} = require('mongodb');
 const configs = require("./../config/config")
+// kept it global for api integration test
 global._db = "";
 
 const connectDB = async () => {

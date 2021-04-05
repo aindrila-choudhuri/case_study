@@ -4,14 +4,34 @@ const recordRoutesHandler = require("../handlers/recordRoutes");
 const {
     validateStartDate, 
     validateEndDate, 
-    validateDate, 
+    validateStartDateLessThanEndDate,
+    validateMinCount,
+    validateMaxCount,
+    validateMinCountLessThanMaxCount,
+    validateMinCountRequired,
+    validateMaxCountRequired,
+    validateStartDateRequired,
+    validateEndDateRequired
 } = require("./../validator/validator");
 
 const routes = express.Router({
     mergeParams: true
 });
 
-routes.post("/", [validateStartDate, validateEndDate, validateDate], async (req, res) => {
+routes.post("/", 
+    [
+        validateMaxCountRequired,
+        validateMinCountRequired,
+        validateStartDateRequired,
+        validateEndDateRequired, 
+        validateStartDate, 
+        validateEndDate, 
+        validateStartDateLessThanEndDate, 
+        validateMinCount, 
+        validateMaxCount, 
+        validateMinCountLessThanMaxCount
+    ], 
+    async (req, res) => {
     try {
         let jsonObj = {}
        
@@ -33,13 +53,11 @@ routes.post("/", [validateStartDate, validateEndDate, validateDate], async (req,
         }
         
         const result = await recordRoutesHandler.fetchData(req);
-        console.log("result");
         jsonObj = {
             code: 0,
             message: "Success",
             records: result
         }
-        
 
         return res.json(jsonObj);
     } catch(err) {

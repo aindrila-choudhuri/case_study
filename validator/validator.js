@@ -1,9 +1,13 @@
 const {check} = require('express-validator');
 
 module.exports = {
-    validateMinCount: check('minCount').isNumeric().withMessage('Min count must be a number'),
-    validateMaxCount: check('maxCount').isNumeric().withMessage('Max count must be a number'),
-    validateMinCountLessThanMaxCount: check('minCount').trim().custom((minCount, { req }) => {
+    validateStartDateRequired: check('startDate').exists().withMessage('Start date is required'),
+    validateEndDateRequired: check('endDate').exists().withMessage('End date is required'),
+    validateMinCountRequired: check('minCount').exists().withMessage('Min count is required'),
+    validateMaxCountRequired: check('maxCount').exists().withMessage('Max count is required'),
+    validateMinCount: check('minCount').isDecimal().withMessage('Min count must be a number'),
+    validateMaxCount: check('maxCount').isDecimal().withMessage('Max count must be a number'),
+    validateMinCountLessThanMaxCount: check('minCount').custom((minCount, { req }) => {
         if (minCount >= req.body.maxCount) {
             throw new Error('Min count must be less than max count')
         }
@@ -11,7 +15,7 @@ module.exports = {
     }),
     validateStartDate : check('startDate').trim().isDate().withMessage('Must be a valid start date'),
     validateEndDate : check('endDate').trim().isDate().withMessage('Must be a valid end date'),
-    validateDate: check('startDate').trim().custom((sdate, { req }) => {
+    validateStartDateLessThanEndDate: check('startDate').trim().custom((sdate, { req }) => {
             // Fetch year, month and day of respective dates 
             const [sy, sm, sd] = sdate.split('-');
             const [ey, em, ed] = req.body.endDate.split('-');
