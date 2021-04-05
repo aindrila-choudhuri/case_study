@@ -1,11 +1,11 @@
 const {MongoClient} = require('mongodb');
-const configs = require("./../config/config")
+// const configs = require("./../config/config")
 // kept it global for api integration test
 global._db = "";
 
 const mongoURI = process.env.MONGO_URI;
 
-// || configs.mongodb.dbURI
+// const mongoURI = process.env.MONGO_URI || configs.mongodb.dbURI
 
 console.log("====mongoURI===", mongoURI)
 
